@@ -4,7 +4,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const model = require("./models/student.js")
 const methodOverride = require("method-override");
-const studentRoutes = require("./routes/studentRoutes.js")
+const studentRoutes = require("./routes/studentRoutes.js");
+const path = require("path")
 
 const app = express();
 const PORT = 3000;
@@ -24,6 +25,7 @@ const connectDB = async () => {
 connectDB();
 
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
